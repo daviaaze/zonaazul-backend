@@ -10,51 +10,51 @@ describe('Register', () => {
 
   it('should register a new user', async () => {
     const response = await request(app)
-      .post('/api/register')
+      .post('/user/register')
       .send({
         name: faker.name.findName(),
         email: faker.internet.email(),
-        password: faker.internet.password(),
+        password: 'Abcdefg8',
         cpf: faker.br.cpf()
       })
     expect(response.status).toBe(200)
   })
   it('should return a token when registered', async () => {
     const response = await request(app)
-      .post('/api/register')
+      .post('/user/register')
       .send({
         name: faker.name.findName(),
         email: faker.internet.email(),
-        password: faker.internet.password(),
+        password: 'Abcdefg8',
         cpf: faker.br.cpf()
       })
     expect(response.body).toHaveProperty('token')
   })
   it('should not register with invalid email', async () => {
     const response = await request(app)
-      .post('/api/register')
+      .post('/user/register')
       .send({
         name: faker.name.findName(),
         email: '123',
-        password: faker.internet.password(),
+        password: 'Abcdefg8',
         cpf: faker.br.cpf()
       })
     expect(response.status).toBe(401)
   })
   it('should not register with invalid cpf', async () => {
     const response = await request(app)
-      .post('/api/register')
+      .post('/user/register')
       .send({
         name: faker.name.findName(),
         email: faker.internet.email(),
-        password: faker.internet.password(),
+        password: 'Abcdefg8',
         cpf: '123'
       })
     expect(response.status).toBe(401)
   })
   it('should not register with invalid password', async () => {
     const response = await request(app)
-      .post('/api/register')
+      .post('/user/register')
       .send({
         name: faker.name.findName(),
         email: faker.internet.email(),

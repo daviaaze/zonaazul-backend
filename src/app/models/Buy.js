@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   Buy.associate = models => {
-    Buy.belongsTo(models.Wallet)
+    Buy.belongsTo(models.User)
+    Buy.belongsTo(models.Seller)
   }
 
   return Buy

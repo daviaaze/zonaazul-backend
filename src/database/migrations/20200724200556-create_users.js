@@ -7,7 +7,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       name: {
         type: Sequelize.STRING,
@@ -22,6 +23,10 @@ module.exports = {
       password_hash: {
         type: Sequelize.STRING,
         allowNull: false
+      },
+      wallet: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       cpf: {
         type: Sequelize.STRING,

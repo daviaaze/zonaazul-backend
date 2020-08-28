@@ -7,7 +7,28 @@ module.exports = {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
+        allowNull: false,
+        unique: true
+      },
+      car_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'cars',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        // primaryKey: true,
+        allowNull: false,
+        references: {
+          model: 'users',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       date: {
         type: Sequelize.DATE,
@@ -16,6 +37,10 @@ module.exports = {
       location: {
         type: Sequelize.JSON,
         allowNull: true
+      },
+      duration: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       created_at: {
         type: Sequelize.DATE,

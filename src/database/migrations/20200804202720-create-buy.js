@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('cars', {
+    return queryInterface.createTable('buys', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -12,22 +12,30 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        // primaryKey: true,
         allowNull: false,
         references: {
           model: 'users',
           key: 'id'
         },
         onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+        onDelete: 'SET NULL'
       },
-      plate: {
-        type: Sequelize.STRING,
+      seller_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'sellers',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
+      },
+      value: {
+        type: Sequelize.INTEGER,
         allowNull: false
       },
-      model: {
-        type: Sequelize.STRING,
-        unique: true,
+      date: {
+        type: Sequelize.DATE,
         allowNull: false
       },
       created_at: {
@@ -42,6 +50,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('cars')
+    return queryInterface.dropTable('buys')
   }
 }

@@ -4,26 +4,11 @@ const jwt = require('jsonwebtoken')
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     name: DataTypes.STRING,
-    email: {
-      type: DataTypes.STRING,
-      validate: {
-        // isEmail: true
-      }
-
-    },
-    password: {
-      type: DataTypes.VIRTUAL,
-      validate: {
-        // len: [4, 10]
-      }
-    },
+    email: DataTypes.STRING,
+    password: DataTypes.VIRTUAL,
     password_hash: DataTypes.STRING,
-    cpf: {
-      type: DataTypes.STRING,
-      validate: {
-        // is: /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/
-      }
-    }
+    cpf: DataTypes.STRING,
+    wallet: DataTypes.INTEGER
   },
   {
     hooks: {
@@ -44,8 +29,9 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   User.associate = models => {
-    User.hasOne(models.Wallet)
     User.hasMany(models.Car)
+    User.hasMany(models.Park)
+    User.hasMany(models.Buy)
   }
 
   return User

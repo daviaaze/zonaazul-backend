@@ -16,7 +16,7 @@ class AppController {
   }
 
   routes () {
-    this.express.use('/api', require('./routes'))
+    this.express.use(require('./routes'))
   }
 }
 
