@@ -21,11 +21,12 @@ class SellerController {
 
   getParks (req, res) {
     const bla = async (parks) => {
-      return Promise.all(parks.map(async park => {
-        const car = await Car.findByPk(park.CarId)
-        park.dataValues.car = car
-        return park
-      })
+      return Promise.all(
+        parks.map(async park => {
+          const car = await Car.findByPk(park.CarId)
+          park.dataValues.car = car
+          return park
+        })
       )
     }
     const date = new Date()

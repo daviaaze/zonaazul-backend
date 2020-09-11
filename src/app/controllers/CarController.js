@@ -36,7 +36,7 @@ class CarController {
   async remove (req, res) {
     await Car.destroy({
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     })
     return res.status(200).send()
