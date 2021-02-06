@@ -1,28 +1,3 @@
----
-subtitle: |
-    <span id="_p0vmhnbsnwk1" class="anchor"></span>Por: Davi Alves de
-    Azevedo
-title: |
-    <span id="_hz8oepc9z1lw" class="anchor"></span>
-
-    <span id="_1wayfdz58qqh" class="anchor"></span>
-
-    <span id="_j94pxd9xxq5" class="anchor"></span>
-
-    <span id="_yqwt7qxmxgcv" class="anchor"></span>
-
-    <span id="_dj89uircy8d" class="anchor"></span>
-
-    <span id="_muepj53e4f4g" class="anchor"></span>Zona Azul - Sistema de
-    Controle e Aplicativo de usuário
----
-
-Sumário
-=======
-
-\
-=
-
 Escolha de tecnologias
 ======================
 
@@ -83,17 +58,3 @@ sistema web se torna simples. Sua capacidade de suprir a demanda
 crescente do aplicativo, sem aumentar tanto sua demanda de hardware,
 também é levada em conta, já que a comunicação por JSON leva a
 complexidade de transformação de dados a quase 0.
-
-O aplicativo
-============
-
-O aplicativo, por sua vez, será responsável pela interação do usuário
-final com o sistema. Possibilitando ao Cliente do negócio, gerenciar
-seus estacionamentos, e dados. Ter visão de seus dados de utilização do
-serviço, e a possibilidade de comprar horas de estacionamento.
-
-Os vendedores poderão utilizar funcionalidades exclusivas para eles,
-como a visualização de estacionamentos ativos, com contagem de minutos
-restantes, e distância até o carro. Além da área de venda de horas,
-possibilitando a interação com os usuários do sistema para vendas
-manuais de crédito no aplicativo.
