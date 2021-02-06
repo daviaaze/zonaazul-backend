@@ -27,7 +27,7 @@ describe('Authentication', () => {
         email: user.email,
         password: 'bla bla bla'
       })
-    expect(response.status).toBe(401)
+    expect(response.status).toBe(402)
   })
 
   it('should not authenticate with invalid email', async () => {
@@ -38,7 +38,7 @@ describe('Authentication', () => {
         email: 'daviaaze@gmail.com',
         password: user.password
       })
-    expect(response.status).toBe(401)
+    expect(response.status).toBe(402)
   })
   it('should recieve a JWT token when authenticate', async () => {
     const user = await factory.create('User', {
@@ -58,7 +58,7 @@ describe('Authentication', () => {
       password: '123'
     })
     const response = await request(app)
-      .get('/user/home')
+      .get('/user/info')
       .set('Authorization', `Bearer ${user.generateToken()}`)
 
     expect(response.status).toBe(200)
