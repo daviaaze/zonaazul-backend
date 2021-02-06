@@ -14,15 +14,18 @@ class SellerController {
       return res.status(401).json({ message: 'Incorrect Password' })
     }
     return res.json({
-      seller,
+      seller: {
+        name: seller.name
+      },
       token: seller.generateToken()
     })
   }
 
   getParks (req, res) {
-    const bla = async (parks) => {
+    const findCars = async (parks) => {
       return Promise.all(
         parks.map(async park => {
+          console.log("hi")
           const car = await Car.findByPk(park.CarId)
           park.dataValues.car = car
           return park
@@ -38,7 +41,7 @@ class SellerController {
         }
       }
     }).then((parks) => {
-      bla(parks).then(list => {
+      findCars(parks).then(list => {
         res.status(200).json(list)
       })
     })

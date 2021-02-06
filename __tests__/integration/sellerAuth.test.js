@@ -11,7 +11,7 @@ describe('Authentication', () => {
   it('should authenticate with valid credentials', async () => {
     const seller = await factory.create('Seller')
     const response = await request(app)
-      .post('/seller/auth')
+      .post('/seller/authenticate')
       .send({
         email: seller.email,
         password: seller.password
@@ -22,30 +22,30 @@ describe('Authentication', () => {
   it('should not authenticate with invalid password', async () => {
     const seller = await factory.create('Seller')
     const response = await request(app)
-      .post('/seller/auth')
+      .post('/seller/authenticate')
       .send({
         email: seller.email,
         password: 'bla bla bla'
       })
-    expect(response.status).toBe(402)
+    expect(response.status).toBe(401)
   })
 
   it('should not authenticate with invalid email', async () => {
     const seller = await factory.create('Seller')
     const response = await request(app)
-      .post('/seller/auth')
+      .post('/seller/authenticate')
       .send({
         email: 'daviaaze@gmail.com',
         password: seller.password
       })
-    expect(response.status).toBe(402)
+    expect(response.status).toBe(401)
   })
   it('should recieve a JWT token when authenticate', async () => {
     const seller = await factory.create('Seller', {
       password: '123'
     })
     const response = await request(app)
-      .post('/seller/auth')
+      .post('/seller/authenticate')
       .send({
         email: seller.email,
         password: '123'
@@ -58,7 +58,7 @@ describe('Authentication', () => {
       password: '123'
     })
     const response = await request(app)
-      .get('/seller/getParks')
+      .get('/seller/home')
       .set('Authorization', `Bearer ${seller.generateToken()}`)
 
     expect(response.status).toBe(200)
@@ -66,14 +66,14 @@ describe('Authentication', () => {
 
   it('should not be able to access private routes without token', async () => {
     const response = await request(app)
-      .get('/seller/getParks')
+      .get('/seller/home')
 
     expect(response.status).toBe(401)
   })
 
   it('should not be able to access private routes with invalid token', async () => {
     const response = await request(app)
-      .get('/seller/getParks')
+      .get('/seller/home')
       .set('Authorization', 'Bearer 123')
 
     expect(response.status).toBe(401)

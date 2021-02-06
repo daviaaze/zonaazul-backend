@@ -1,19 +1,23 @@
 const { User } = require('../models')
 
-class AuthController {
+class UserController {
   async info (req, res) {
     const { userId } = req
 
     const user = await User.findOne({ where: { id: userId } })
 
-    if (!user) {
-      return res.status(401).json({ message: 'User not found' })
-    }
-
     return res.json({
-      user
+      user: {
+        name: user.name,
+        email: user.email,
+        cpf: user.cpf,
+        wallet: user.wallet,
+        buys: user.buy,
+        parks: user.park,
+        cars: user.cars
+      }
     })
   }
 }
 
-module.exports = new AuthController()
+module.exports = new UserController()

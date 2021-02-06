@@ -5,8 +5,6 @@ class RegisterController {
   async register (req, res) {
     const { email, password, cpf, name } = req.body
 
-    console.log(email, password, cpf, name)
-
     function checkemail (email) {
       const re = /\S+@\S+\.\S+/
       return re.test(email)
@@ -23,7 +21,6 @@ class RegisterController {
         ]
       }
     })
-    console.log(checkUser)
     if (checkUser) {
       if (checkUser.email === email) return res.status(401).json({ message: 'Email já registrado' })
       if (checkUser.cpf === cpf) return res.status(401).json({ message: 'CPF já registrado' })
