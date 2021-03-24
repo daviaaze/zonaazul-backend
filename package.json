@@ -23,7 +23,8 @@
     "pretest": "cross-env NODE_ENV=production sequelize db:migrate",
     "dbmigrate": "sequelize db:migrate",
     "test": "cross-env NODE_ENV=production jest --runInBand",
-    "posttest": "cross-env NODE_ENV=production sequelize db:migrate:undo:all"
+    "posttest": "cross-env NODE_ENV=production sequelize db:migrate:undo:all",
+    "heroku-prebuild": "npm install -f",
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
